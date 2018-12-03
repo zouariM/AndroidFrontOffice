@@ -2,8 +2,11 @@ package runingtracking.domain;
 
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class Position {
 	
+	@JsonIgnoreProperties({"x","y"})
 	private GeoJsonPoint point;
 	private long time;
 	
