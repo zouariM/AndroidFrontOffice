@@ -1,0 +1,1 @@
+https://blog.codecentric.de/en/2012/02/spring-data-mongodb-geospatial-queries/

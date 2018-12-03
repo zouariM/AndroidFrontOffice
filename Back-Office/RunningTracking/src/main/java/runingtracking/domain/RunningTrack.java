@@ -9,18 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Document(collection="runningTracking")
+@Document(collection="runningTrack")
 @JsonInclude(value=Include.NON_NULL)
-public class RunningTracking {
+public class RunningTrack {
 	
 	@Id
 	private String id;
 	private User user;
 	private List<Position> positions;
 	
-	public RunningTracking() {}
+	public RunningTrack() {}
 
-	public RunningTracking(User u) {
+	public RunningTrack(User u) {
 		this.user = u;
 	}
 	
