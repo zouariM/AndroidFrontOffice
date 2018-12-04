@@ -2,9 +2,14 @@ package runingtracking.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import runingtracking.rest.Views;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(value=Include.NON_NULL)
+@JsonView(value=Views.UserView.class)
 public class User {
 	
 	public String firstName;

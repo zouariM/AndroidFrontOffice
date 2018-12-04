@@ -1,10 +1,13 @@
 package runingtracking.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.HeadersBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,13 +33,22 @@ public class RunningTrackResource {
 	}
 	
 	@PatchMapping("/{id}")
-	public boolean addPosition(@RequestBody Position p, @PathVariable String id) {
+	public ResponseEntity<?> addPosition(@RequestBody Position p, @PathVariable String id) {
 		logger.info("Add position : " +p.toString());
-		return runningTrackService.addPosition(p, id);
+		Optional<RunningTrack> op = runningTrackService.addPosition(p, id);
+		if(op.isPresent())
+			return ResponseEntity.accepted().build();
+		else
+			return ResponseEntity.notFound().build();
 	}
 	
 	@GetMapping("/{id}")
-	public RunningTrack findById(@PathVariable String id) {
-		return runningTrackService.findById(id);
+	public ResponseEntity<RunningTrack> findById(@PathVariable String id) {
+		Optional<RunningTrack> op = runningTrackService.findById(id);
+		if(op.isPresent())
+			return ResponseEntity.ok(op.get());
+		
+		else 
+			return ResponseEntity.notFound().build();
 	}
 }

@@ -10,6 +10,7 @@ import runingtracking.domain.Position;
 import runingtracking.domain.RunningTrack;
 import runingtracking.repository.RunningTrackRepository;
 import runingtracking.service.RunningTrackService;
+import runingtracking.domain.User;
 
 @Service
 public class RunningTrackServiceImpl implements RunningTrackService {
@@ -23,20 +24,27 @@ public class RunningTrackServiceImpl implements RunningTrackService {
 	}
 
 	@Override
-	public boolean addPosition(Position p, String id) {
+	public Optional<RunningTrack> addPosition(Position p, String id) {
 		Optional<RunningTrack> op = repository.findById(id);
-		if(!op.isPresent())
-			return false;
+		RunningTrack r = null;
+		if(op.isPresent()) {
+			r = op.get();
+			r.addPosition(p);
+			r = repository.save(r);
+		}
 		
-		RunningTrack r = op.get();
-		r.addPosition(p);
-		return repository.save(r).getPositions().contains(p);
-		
+		return Optional.ofNullable(r);
 	}
 
 	@Override
-	public RunningTrack findById(String id) {
-		return repository.findById(id).orElse(null);
+	public Optional<RunningTrack> findById(String id) {
+		return repository.findById(id);
+	}
+
+	@Override
+	public String addUser(User user) {
+		RunningTrack toAdd = new RunningTrack(user);
+		return repository.save(toAdd).getId();
 	}
 
 }
