@@ -1,34 +1,33 @@
 package runingtracking.domain;
 
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 public class Position {
 	
-	@JsonIgnoreProperties({"x","y"})
-	private GeoJsonPoint point;
+	private double longitude;
+	private double latitude;
 	private long time;
 	
 	public Position() {};
 	
 	public Position(double lat, double lon) {
-		this.point = new GeoJsonPoint(lat, lon);
+		this.latitude = lat;
+		this.longitude = lon;
 		this.time = System.currentTimeMillis();
 	}
-	
-	public Position(GeoJsonPoint point, long time) {
-		super();
-		this.point = point;
-		this.time = time;
+
+	public double getLongitude() {
+		return longitude;
 	}
 
-	public GeoJsonPoint getPoint() {
-		return point;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
-	public void setPoint(GeoJsonPoint point) {
-		this.point = point;
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
 	public long getTime() {
@@ -40,7 +39,7 @@ public class Position {
 	}
 	
 	public String toString() {
-		return String.format("Position : { [ x : %s, y : %s ], time : %s }", 
-							point.getX(), point.getY(), time);
+		return String.format("Position : { [ latitude : %s, longitude : %s ], time : %s }", 
+							latitude, longitude, time);
 	}
 }

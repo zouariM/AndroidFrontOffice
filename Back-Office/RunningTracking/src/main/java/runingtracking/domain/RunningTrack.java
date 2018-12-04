@@ -2,6 +2,7 @@ package runingtracking.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Document(collection="runningTrack")
+@Document(collection="runningTracks")
 @JsonInclude(value=Include.NON_NULL)
 public class RunningTrack {
 	
@@ -53,5 +54,12 @@ public class RunningTrack {
 			positions = new ArrayList<>();
 		
 		this.positions.add(p);
+	}
+	
+	public String toString() {
+		String positionsStr = this.positions.parallelStream().map(Position::toString).collect(Collectors.joining("\n"));
+		
+		return String.format("RunningTrack { id: %s, User : %s } \n Tracks: ***** \n %s", 
+							  id,user.toString(), positionsStr);
 	}
 }
