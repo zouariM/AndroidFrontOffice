@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.ResponseEntity.HeadersBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,8 +34,9 @@ public class RunningTrackResource {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> addPosition(@RequestBody Position p, @PathVariable String id) {
 		logger.info("Add position : " +p.toString());
-		Optional<RunningTrack> op = runningTrackService.addPosition(p, id);
-		if(op.isPresent())
+		boolean res = runningTrackService.addPosition(p, id);
+		
+		if(res)
 			return ResponseEntity.accepted().build();
 		else
 			return ResponseEntity.notFound().build();

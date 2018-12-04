@@ -24,16 +24,10 @@ public class RunningTrackServiceImpl implements RunningTrackService {
 	}
 
 	@Override
-	public Optional<RunningTrack> addPosition(Position p, String id) {
-		Optional<RunningTrack> op = repository.findById(id);
-		RunningTrack r = null;
-		if(op.isPresent()) {
-			r = op.get();
-			r.addPosition(p);
-			r = repository.save(r);
-		}
+	public boolean addPosition(Position p, String id) {
+		long nb = repository.pushPosition(p, id);
 		
-		return Optional.ofNullable(r);
+		return nb > 0;
 	}
 
 	@Override

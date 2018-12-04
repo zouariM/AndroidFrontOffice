@@ -1,1 +1,4 @@
 https://blog.codecentric.de/en/2012/02/spring-data-mongodb-geospatial-queries/
+https://www.mkyong.com/spring-boot/spring-boot-spring-data-mongodb-example/
+https://docs.spring.io/spring-data/data-document/docs/current/reference/html/#repositories.custom-implementations (documentation mongo-spring)
+https://dzone.com/articles/using-mongodb-geospatial (mongo geospatial avec spring boot)
