@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Connexion"
+        android:key="connexion">
+
+        <CheckBoxPreference
+            android:title="Connexion au serveur"
+            android:key="connect_to_server"
+            android:summary="Connexion au serveur"
+            android:defaultValue="true"/>
+
+        <ListPreference
+            android:title="Intervalle de mise à jour"
+            android:key="updates_intervall"
+            android:summary="Saisir l'intervalle de mise à jour"
+            android:defaultValue="30"
+            android:entries="@array/updateIntervall"
+            android:entryValues="@array/updateIntervallValues"
+            android:dependency="connect_to_server"/>
+
+        <ListPreference
+            android:title="API de localisation"
+            android:key="locatlisation_api"
+            android:summary="Chosir l'API de localisation"
+            android:defaultValue="googleAPI"
+            android:entries="@array/localisationAPI"
+            android:entryValues="@array/localisationAPIValues"
+            android:dependency="connect_to_server"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Runway</string>
+
+    <string-array name="updateIntervall">
+        <item name="1">Chaque 10 secondes</item>
+        <item name="30">Chaque 30 secondes</item>
+        <item name="60">Chaque 1 minute</item>
+        <item name="300">Chaque 5 minutes</item>
+    </string-array>
+
+    <string-array name="updateIntervallValues">
+        <item name="10">10</item>
+        <item name="30">30</item>
+        <item name="60">60</item>
+        <item name="300">300</item>
+    </string-array>
+
+    <string-array name="localisationAPI">
+        <item name="googleAPI">Google API</item>
+        <item name="androidAPI">Android API</item>
+    </string-array>
+
+    <string-array name="localisationAPIValues">
+        <item name="googleAPI">googleAPI</item>
+        <item name="androidAPI">androidAPI</item>
+    </string-array>
+
+</resources>

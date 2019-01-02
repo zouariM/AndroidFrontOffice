@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp"
+    android:weightSum="100">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Distance m"
+            android:layout_weight="33.3"
+            android:layout_marginLeft="40dp"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="66.6"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            >
+            <TextView
+                android:text="Date début"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/run_start_time_column"
+                android:textColor="@color/colorPrimary"
+                />
+            <TextView
+                android:text="Date fin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/run_start_time_column"
+                android:id="@+id/run_finish_time_column"
+                android:textColor="@color/colorPrimary"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durée H"
+                android:layout_below="@id/run_finish_time_column"
+                android:textColor="@color/colorPrimary"
+                />
+        </LinearLayout>
+
+</LinearLayout>

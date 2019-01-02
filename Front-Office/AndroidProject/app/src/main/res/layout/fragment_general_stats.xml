@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/general_stats_name"
+            android:text="Full Name"
+            android:textStyle="italic"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <include layout="@layout/fragment_stats_distance"/>
+    <include layout="@layout/fragment_stats_time"/>
+    <include layout="@layout/fragment_stats_speed"/>
+
+</LinearLayout>

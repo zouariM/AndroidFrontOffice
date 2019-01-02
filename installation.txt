@@ -1,0 +1,8 @@
+Le projet est composée par deux entités: Back-Office et Front-Office
+-- Installation de Back:
+1-Installation d'un serveur mongo et lancement de serveur
+2- Build jar file par mvn clean install (en mode sudo)
+3- Lancement de serveur Http par java -jar "target/fichier.jar"
+
+-- Installation de Front:
+Lancement avec android-studio et ajout des fichiers jar de API Http-Core et Http-Client. 

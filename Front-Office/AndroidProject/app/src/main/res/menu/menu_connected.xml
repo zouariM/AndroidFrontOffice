@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_edit_settings"
+        android:title="Paramètres"
+        android:icon="@android:drawable/ic_menu_manage"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/action_add_run"
+        android:title="Courir"
+        android:icon="@android:drawable/ic_menu_add"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/fetch_all_running_stats"
+        android:title="Consulter les statistiques"
+        android:icon="@android:drawable/ic_menu_view"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/connected_logout"
+        android:title="Logout"
+        app:showAsAction="withText"
+        />
+</menu>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/stats_options_tri"
+        android:title="Trier"
+        app:showAsAction="withText"
+        />
+
+    <item
+        android:id="@+id/stats_sort_inverse"
+        android:title="Inverse"
+        app:showAsAction="withText"
+        />
+</menu>
