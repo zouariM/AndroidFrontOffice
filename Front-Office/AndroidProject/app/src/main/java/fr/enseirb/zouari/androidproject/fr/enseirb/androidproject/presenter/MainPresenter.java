@@ -1,12 +1,16 @@
 package fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.presenter;
 
 import android.content.SharedPreferences;
+import android.util.Log;
+
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.user.User;
 
 /**
  * Presenter User: Module et MainActivity: View
  */
 public class MainPresenter {
+
+    private static final String LOG_TAG = MainPresenter.class.getSimpleName();
 
     private User user;
     private View view;
@@ -35,12 +39,14 @@ public class MainPresenter {
         return user.isConnected();
     }
 
-    // Déconnexion et libération de la session
+    // Déconnexion et suppression de la session
     public void logout(){
+        // Libération des ressources de la session
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
         User.logout();
+        user = User.getCurrentUser();
 
         // notification de vue
         view.onLogoutSuccess();

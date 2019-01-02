@@ -23,6 +23,7 @@ import java.util.List;
 import fr.enseirb.zouari.androidproject.R;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.statistics.SpeedUnity;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.presenter.RunRoutePresenter;
+import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters.FragmentViewAdapter;
 
 /**
  * View affichage d'un parcours donnée sur le Map
@@ -98,6 +99,7 @@ public class RunRouteFragment extends Fragment implements OnMapReadyCallback, Ru
 
     // Visualisation de la route
     private void addRoute(){
+        map.clear();
         Log.d(LOG_TAG," addRoute for points nbr: " + points.size());
         if(points.size() < 2)
             return;
@@ -107,7 +109,7 @@ public class RunRouteFragment extends Fragment implements OnMapReadyCallback, Ru
         // AJout de Marker
         addMarkers(points.get(0), points.get(points.size() - 1));
         // Adaptation de caméra
-        moveCamera(points.get(0), 15.0f);
+        moveCamera(points.get(0), 17.0f);
     }
 
     // Réccupération de Map
@@ -139,7 +141,7 @@ public class RunRouteFragment extends Fragment implements OnMapReadyCallback, Ru
     private void addPolyline(List<LatLng> points){
         PolylineOptions polylineOptions = new PolylineOptions();;
         polylineOptions.addAll(points);
-        polylineOptions.width(15.0f);
+        polylineOptions.width(10.0f);
         polylineOptions.color(Color.GREEN);
         map.addPolyline(polylineOptions);
     }

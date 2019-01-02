@@ -1,4 +1,4 @@
-package fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view;
+package fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters;
 
 import android.app.Activity;
 import android.util.Log;
@@ -25,20 +25,20 @@ import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.Running
 public class RunStatsArrayAdapter extends ArrayAdapter<RunStats> {
 
     private Activity activity;
-    private List<RunStats> runningTracks;
+    private List<RunStats> runningTracksStats;
     private boolean inverse = false;
 
 
     public RunStatsArrayAdapter(Activity activity, int ressource, List<RunStats> stats){
         super(activity, ressource, stats);
         this.activity = activity;
-        this.runningTracks = stats;
+        this.runningTracksStats = stats;
 
     }
 
     public void add(RunningTrack r){
         RunStats stat = new RunStats(r);
-        this.runningTracks.add(stat);
+        this.runningTracksStats.add(stat);
 
         Log.i(this.getClass().getSimpleName(), "Date :" + stat.getStartTimeString());
     }
@@ -63,8 +63,8 @@ public class RunStatsArrayAdapter extends ArrayAdapter<RunStats> {
         TextView duration = (TextView)rowView.findViewById(R.id.run_duration);
         TextView distance = (TextView)rowView.findViewById(R.id.run_distance);
 
-        position = (inverse == true) ? (runningTracks.size()-position-1) : position;
-        RunStats stats = runningTracks.get(position);
+        position = (inverse == true) ? (runningTracksStats.size()-position-1) : position;
+        RunStats stats = runningTracksStats.get(position);
 
         starTime.setText(stats.getStartTimeString());
         finishTime.setText(stats.getFinsihTime());
@@ -83,7 +83,7 @@ public class RunStatsArrayAdapter extends ArrayAdapter<RunStats> {
     @Override
     public void sort(Comparator<? super RunStats> comparator) {
         inverse = false;
-        Collections.sort(this.runningTracks, comparator);
+        Collections.sort(this.runningTracksStats, comparator);
     }
 
     public void inverse(){

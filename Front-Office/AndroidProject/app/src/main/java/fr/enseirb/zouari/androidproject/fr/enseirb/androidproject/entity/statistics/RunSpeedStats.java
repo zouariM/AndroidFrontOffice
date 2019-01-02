@@ -46,11 +46,11 @@ public class RunSpeedStats implements Visitor {
         speedFormat.setMaximumFractionDigits(2);
 
         maxSpeed = 0f;
-        minSpeed = 0f;
+        minSpeed = null;
         moySpeed = 0f;
 
         globalMaxSpeed = 0f;
-        globalMinSpeed = 0f;
+        globalMinSpeed = null;
         globalMoySpeed = 0f;
     }
 
@@ -75,7 +75,11 @@ public class RunSpeedStats implements Visitor {
             visitor.visit(r);
 
             globalMaxSpeed = Math.max(globalMaxSpeed, visitor.getMaxSpeed());
-            globalMinSpeed = Math.min(globalMinSpeed, visitor.getMinSpeed());
+            // mode test
+            if(visitor.getMinSpeed() != null) {
+                float speed = visitor.getMinSpeed();
+                globalMinSpeed = (globalMinSpeed == null) ? speed : Math.min(globalMinSpeed, speed);
+            }
         }
 
         distanceStats.init();
@@ -89,22 +93,27 @@ public class RunSpeedStats implements Visitor {
 
     private void setSpeedBounds(TreeSet<Position> positions){
         maxSpeed = 0f;
-        minSpeed = 0f;
+        minSpeed = null;
 
         Iterator<Position> it = positions.iterator();
         while(it.hasNext()){
             Position p1 = it.next();
             if(it.hasNext()){
                 Position p2 = it.next();
-                long t = (p2.getTime() - p1.getTime()) / 1000;
+                long t = (p2.getTime() - p1.getTime()) / 1000l;
                 float d = p1.getDistanceTo(p2);
 
                 if(t > 0) {
-                    maxSpeed = Math.max(maxSpeed, d / t);
-                    minSpeed = Math.min(minSpeed, d / t);
+                    float speed = d/t;
+                    maxSpeed = Math.max(maxSpeed, speed);
+                    minSpeed = (minSpeed == null) ? speed : Math.min(this.minSpeed, speed);
                 }
+                else
+                    Log.e(LOG_TAG, "duration < 0 " + t);
             }
         }
+
+        Log.d(LOG_TAG, "minSpeed = " + this.minSpeed);
     }
 
     private void setMoySpeed(RunningTrack runningTrack){
@@ -113,9 +122,9 @@ public class RunSpeedStats implements Visitor {
         runTimeStats.init();
         runTimeStats.visit(runningTrack);
 
-        long duration = runTimeStats.getDuration() / 1000;
+        long duration = runTimeStats.getDuration() / 1000l;
         if(duration > 0)
-            moySpeed = distanceStats.getDistance() / (runTimeStats.getDuration()/1000);
+            moySpeed = distanceStats.getDistance() / duration;
         else
             moySpeed = 0f;
     }
@@ -128,7 +137,7 @@ public class RunSpeedStats implements Visitor {
         return maxSpeed;
     }
 
-    public float getMinSpeed(){
+    public Float getMinSpeed(){
         return minSpeed;
     }
 

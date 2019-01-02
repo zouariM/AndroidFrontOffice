@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.enseirb.zouari.androidproject.R;
-import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.FragmentViewAdapter;
+import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters.FragmentViewAdapter;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.RunRouteFragment;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.StatsListFragment;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.TriStatsDialog;

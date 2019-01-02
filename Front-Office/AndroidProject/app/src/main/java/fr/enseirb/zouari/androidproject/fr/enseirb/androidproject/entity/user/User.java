@@ -116,7 +116,7 @@ public class User implements Serializable, ModelObserver<RunningTrack> {
         Log.d(LOG_TAG, "onFindAllListener call, list size : " + runningTracks.size());
         currentUser.runningTracks = new ArrayList<>();
         for(RunningTrack r: runningTracks) {
-            if (r.getPositions().size() > 0)
+            if (r.getPositions().size() > 1)
                 currentUser.runningTracks.add(r);
             else
                 Log.e(LOG_TAG, "empty run");
@@ -137,7 +137,7 @@ public class User implements Serializable, ModelObserver<RunningTrack> {
             throw new IllegalStateException("Current user in null");
 
         if(currentUser.runningTracks != null) {
-            if(runningTrack.getPositions().size() > 0)
+            if(runningTrack.getPositions().size() > 1)
                 currentUser.runningTracks.add(runningTrack);
         }
     }

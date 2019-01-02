@@ -16,7 +16,7 @@ import java.util.List;
 import fr.enseirb.zouari.androidproject.R;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.RunningTrack;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.statistics.RunStats;
-import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.RunStatsArrayAdapter;
+import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters.RunStatsArrayAdapter;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.user.User;
 
 /**

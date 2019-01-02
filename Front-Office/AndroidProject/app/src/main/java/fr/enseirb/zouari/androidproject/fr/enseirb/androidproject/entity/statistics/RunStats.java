@@ -15,6 +15,7 @@ import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.entity.Running
 /**
  * Cette classe est obsolète aprés l'implémentation de Visitor pour les calculs des statistiques
  * TODO remove this class and update view
+ * @deprecated
  */
 public class RunStats {
 

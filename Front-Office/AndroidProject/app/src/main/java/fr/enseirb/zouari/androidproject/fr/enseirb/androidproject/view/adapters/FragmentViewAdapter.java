@@ -1,4 +1,4 @@
-package fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments;
+package fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

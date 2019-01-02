@@ -34,7 +34,7 @@ public class RunServiceAndroidAPI extends RunService implements LocationListener
     protected void startLocationManger(int updatesIntervall) {
         Log.d(LOG_TAG, "startLOcation Manager");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-            Log.d(LOG_TAG, "disabled permissions");
+            Log.e(LOG_TAG, "disabled permissions");
         else
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, updatesIntervall, 0, this);
     }

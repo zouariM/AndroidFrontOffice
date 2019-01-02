@@ -15,7 +15,7 @@ import java.util.Map;
 import fr.enseirb.zouari.androidproject.R;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.presenter.Constants;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.presenter.MainPresenter;
-import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.FragmentViewAdapter;
+import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.adapters.FragmentViewAdapter;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.GlobalStatsFragment;
 import fr.enseirb.zouari.androidproject.fr.enseirb.androidproject.view.fragments.LoginFragment;
 
