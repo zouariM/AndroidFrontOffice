@@ -18,15 +18,18 @@ import runingtracking.rest.Views;
 public class RunningTrack {
 	
 	@Id
-	@JsonView(value=Views.UserView.class)
+	@JsonView(value= {Views.UserView.class, Views.Runways.class})
 	private String id;
 	
 	@JsonView(value=Views.UserView.class)
 	private User user;
 	
-	private List<Position> positions;
+	@JsonView(value=Views.Runways.class)
+	private List<Runway> runways;
 	
-	public RunningTrack() {}
+	public RunningTrack() {
+		runways = new ArrayList<>();
+	}
 
 	public RunningTrack(User u) {
 		this.user = u;
@@ -47,26 +50,35 @@ public class RunningTrack {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	public List<Position> getPositions() {
-		return positions;
+	
+	public List<Runway> getRunways() {
+		if(runways == null)
+			runways = new ArrayList<>();
+		return runways;
 	}
 
-	public void setPositions(List<Position> positions) {
-		this.positions = positions;
+	public Runway getLast() {
+		if(runways.isEmpty())
+			return null;
+		else
+			return runways.get(runways.size() - 1);
 	}
 	
-	public void addPosition(Position p) {
-		if(positions == null)
-			positions = new ArrayList<>();
+	public void setRunways(List<Runway> runways) {
+		this.runways = runways;
+	}
+
+	public void addRunway(Runway r) {
+		if(runways == null)
+			runways = new ArrayList<>();
 		
-		this.positions.add(p);
+		this.runways.add(r);
 	}
 	
 	public String toString() {
-		String positionsStr = this.positions.parallelStream().map(Position::toString).collect(Collectors.joining("\n"));
+		String str = this.runways.parallelStream().map(Runway::toString).collect(Collectors.joining("\n"));
 		
 		return String.format("RunningTrack { id: %s, User : %s } \n Tracks: ***** \n %s", 
-							  id,user.toString(), positionsStr);
+							  id,user.toString(), str);
 	}
 }

@@ -1,8 +1,6 @@
 package runingtracking.rest;
 
-import java.util.AbstractMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,14 +35,38 @@ public class UserResource {
 		return service.findAll();
 	}
 	
-	@PostMapping
+	@PostMapping("/login")
 	@JsonView(value=Views.UserView.class)
-	public ResponseEntity<Entry<String, String>> add(@RequestBody User toAdd) {
-		logger.info("Add user : " + toAdd.toString());
-		String id = service.addUser(toAdd);
-		
-		Entry<String, String> res = new AbstractMap.SimpleEntry<String, String>("id", id);
-		return new ResponseEntity<Entry<String, String>>(res, HttpStatus.CREATED);
+	public ResponseEntity<RunningTrack> login(@RequestBody User user) {
+		RunningTrack run = service.login(user);
+		if(run != null)
+			return new ResponseEntity<RunningTrack>(run, HttpStatus.OK);
+		else
+			return ResponseEntity.notFound().build();
 	}
 	
+	@PostMapping
+	@JsonView(value=Views.UserView.class)
+	public ResponseEntity<RunningTrack> add(@RequestBody User toAdd) {
+		logger.info("Add user : " + toAdd.toString());
+		RunningTrack user = service.addUser(toAdd);
+		
+		if(user != null)
+			return new ResponseEntity<RunningTrack>(user, HttpStatus.CREATED);
+		else
+			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+	}
+	
+	@GetMapping("/{login}")
+	@JsonView(value=Views.UserView.class)
+	public ResponseEntity<RunningTrack> findByLogin(@PathVariable String login){
+		RunningTrack user = service.findUserByLogin(login);
+		
+		if(user == null)
+			return new ResponseEntity<RunningTrack>(HttpStatus.NOT_FOUND);
+		else
+			return new ResponseEntity<RunningTrack>(user, HttpStatus.OK);
+		
+	}
+
 }

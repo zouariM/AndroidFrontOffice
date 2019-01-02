@@ -1,5 +1,13 @@
 package runingtracking.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import runingtracking.rest.Views;
+
+@JsonInclude(value=Include.NON_NULL)
+@JsonView(value=Views.Runways.class)
 public class Position {
 	
 	private double longitude;

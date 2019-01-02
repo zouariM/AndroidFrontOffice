@@ -2,6 +2,7 @@ package runingtracking.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import runingtracking.rest.Views;
@@ -12,19 +13,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonView(value=Views.UserView.class)
 public class User {
 	
-	public String firstName;
-	public String lastName;
-	@JsonIgnore
-	public String password;
+	private String login;
+	private String firstName;
+	private String lastName;
+	private String password;
 	
 	public User() {}
-
-	public User(String firstName, String lastName, String password) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.password = password;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -42,12 +36,22 @@ public class User {
 		this.lastName = lastName;
 	};
 	
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
-
+	
+	@JsonProperty("password")
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
 	public String toString() {
