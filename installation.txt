@@ -1,4 +1,4 @@
-Le projet est composée par deux entités: Back-Office et Front-Office
+Le projet est composée par deux entités: Back-End et Front-End
 -- Installation de Back:
 1-Installation d'un serveur mongo et lancement de serveur
 2- Build jar file par mvn clean install (en mode sudo)
