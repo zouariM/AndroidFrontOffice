@@ -26,7 +26,7 @@ public class InitDataBase implements CommandLineRunner {
 		userRepository.deleteAll();
 		
 		
-		/*RunningTrack u1 = new RunningTrack(new User(args[0], args[1],"xx"));
+		RunningTrack u1 = new RunningTrack(new User(args[0], args[1],"xx"));
 		Runway run1 = new Runway();
 		run1.setStartTime(System.currentTimeMillis());
 		run1.addPosition(new Position(0d, 1d));
@@ -45,10 +45,10 @@ public class InitDataBase implements CommandLineRunner {
 		//userRepository.save(u1);
 		
 		//fetch all Users
-		/*System.out.println("Users found with findAll()");
+		System.out.println("Users found with findAll()");
 		System.out.println("--------------------------");
 		userRepository.findAll().forEach(System.out::println);
-		*/
+		
 		
 	}
 
